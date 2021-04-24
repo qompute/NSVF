@@ -35,7 +35,7 @@ class NSVFModel(NeRFModel):
     def add_args(cls, parser):
         super().add_args(parser)
         parser.add_argument('--fine-num-sample-ratio', type=float, default=0,
-            help='raito of samples compared to the first pass')
+            help='ratio of samples compared to the first pass')
         parser.add_argument('--inverse-distance-coarse-sampling', type=str, 
             choices=['none', 'camera', 'origin'], default='none',
             help='if set, we do not sample points uniformly through voxels.')
@@ -175,6 +175,7 @@ def base_architecture(args):
     
     # encoder default parameter
     args.voxel_embed_dim = getattr(args, "voxel_embed_dim", 32)
+    # args.voxel_embed_dim = getattr(args, "voxel_embed_dim", 4)
     args.voxel_path = getattr(args, "voxel_path", None)
     args.initial_boundingbox = getattr(args, "initial_boundingbox", None)
 
